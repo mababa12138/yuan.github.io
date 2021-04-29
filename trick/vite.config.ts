@@ -8,5 +8,8 @@ export default defineConfig({
   resolve: {
     '@': resolve(__dirname, 'src')
   },
-  base: './'
+  base: './',
+  build: {
+    emptyOutDir: '../../'
+  }
 })

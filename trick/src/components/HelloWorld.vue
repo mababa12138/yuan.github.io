@@ -1,11 +1,10 @@
 <template>
-
   <div class="catalogue">
-    <a :class="{
+    <a v-for="key in Object.keys(htmlStrings)"
+       :key="key"
+       :class="{
       'catalogue__item': true,
       'catalogue__item--active': curArticle === key}"
-       v-for="key in Object.keys(htmlStrings)"
-       :key="key"
        @click="showMarkdown(key)"
     >
       {{ key }}
@@ -18,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import {defineComponent} from 'vue'
 import htmlStrings from "../markdown"
 
 export default defineComponent({
@@ -32,18 +31,16 @@ export default defineComponent({
   data () {
     return {
       curArticle: '',
-      htmlStrings : Object.freeze(htmlStrings)
+      htmlStrings: Object.freeze(htmlStrings)
     }
   },
   methods: {
-    showMarkdown (articleKey: string): void {
+    showMarkdown(articleKey: string): void {
       console.log(articleKey)
     }
   },
   computed: {
-    article () {
-      return this.htmlStrings[this.curArticle]
-    }
+    article: (vm: any) => vm.htmlStrings[vm.curArticle]
   },
   created () {
     this.curArticle = Object.keys(this.htmlStrings)[0]
@@ -51,7 +48,7 @@ export default defineComponent({
 })
 </script>
 
-<style scoped lang="scss" rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
 a {
   color: #17a9ff;
   cursor: pointer;
