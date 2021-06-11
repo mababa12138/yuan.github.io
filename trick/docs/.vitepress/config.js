@@ -1,6 +1,7 @@
 module.exports = {
   title: 'Lets Begin',
   description: 'Just playing around.',
+  dest: '../../../',
   themeConfig: {
     nav: [
       { 
