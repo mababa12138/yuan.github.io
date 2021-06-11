@@ -2,9 +2,8 @@
   <div class="catalogue">
     <a v-for="key in Object.keys(htmlStrings)"
        :key="key"
-       :class="{
-      'catalogue__item': true,
-      'catalogue__item--active': curArticle === key}"
+       class="catalogue-item"
+       :class="{'catalogue-item__active': curArticle === key}"
        @click="showMarkdown(key)"
     >
       {{ key }}
@@ -36,7 +35,7 @@ export default defineComponent({
   },
   methods: {
     showMarkdown(articleKey: string): void {
-      console.log(articleKey)
+      this.curArticle = articleKey
     }
   },
   computed: {
@@ -66,6 +65,14 @@ a {
       padding: 10px;
       border-radius: 4px;
     }
+  }
+}
+
+.catalogue-item {
+  color: #5c6370;
+  margin-right: 10px;
+  &__active {
+    color: #17a9ff;
   }
 }
 </style>
